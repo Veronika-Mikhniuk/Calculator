@@ -16,8 +16,8 @@ namespace Calculator
 
 		private void PerformingActions()
 		{
-			double dNumber1 = Convert.ToDouble(Number);
-			double dNumber2 = Convert.ToDouble(tbBoard.Text);
+			double dNumber1 = Convert.ToDouble(Number.Replace('.', ','));
+			double dNumber2 = Convert.ToDouble(tbBoard.Text.Replace('.', ','));
 			double result;
 			if (Action == "+")
 			{
@@ -35,7 +35,7 @@ namespace Calculator
 			{
 				result = dNumber1 / dNumber2;
 			}
-			tbBoard.Text = result.ToString();
+			tbBoard.Text = result.ToString().Replace(',', '.');
 		}
 
 		private void numberButtons_Click(object sender, EventArgs e)
@@ -105,7 +105,7 @@ namespace Calculator
 
 		private void splitButton_Click(object sender, EventArgs e)
 		{
-			tbBoard.Text = !tbBoard.Text.Contains(",") ? tbBoard.Text + ",": tbBoard.Text;
+			tbBoard.Text = !tbBoard.Text.Contains(".") ? tbBoard.Text + ".": tbBoard.Text;
 		}
 	
 		private void deleteButton_Click(object sender, EventArgs e)
